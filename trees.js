@@ -17,7 +17,7 @@ class BST {
     //first check to see if there is a root, if not assign new value to new node
     if (this.root === null) {
       this.root = new Node(value);
-      console.log(this);
+
       return this;
     }
 
@@ -32,7 +32,6 @@ class BST {
           currentValue = currentValue.left;
         } else {
           currentValue.left = new Node(value);
-          console.log(this);
           return this;
         }
       }
@@ -41,7 +40,7 @@ class BST {
           currentValue = currentValue.right;
         } else {
           currentValue.right = new Node(value);
-          console.log(this);
+
           return this;
         }
       }
@@ -66,6 +65,25 @@ class BST {
     }
     return false;
   }
+
+  BFS() {
+    let que = [];
+    let visited = [];
+
+    que.push(this.root);
+    while (que.length > 0) {
+      let current = que.shift();
+      visited.push(current.value);
+      if (current.left) {
+        que.push(current.left);
+      }
+      if (current.right) {
+        que.push(current.right);
+      }
+    }
+    console.log(visited);
+    return visited;
+  }
 }
 
 let tree = new BST();
@@ -77,8 +95,5 @@ tree.insert(2);
 tree.insert(7);
 tree.insert(15);
 
-console.log(tree.find(2));
-
-//10
-//5     //13
-//2    //7      //15
+// console.log(tree.find(2));
+tree.BFS();
