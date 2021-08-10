@@ -152,3 +152,18 @@ tree.insert(20);
 
 // console.log(tree.find(2));
 console.log(tree.DFSInOrder());
+
+//when to use each?
+// all are O(n) time, but space is more worrisome
+//if you have alot of nodes that you neeed to work with
+// think of how many items in a que you wil have to store fi big tree (breadth first)
+// so want to use DFS if wider tree (so more nodes)
+// if you have fewer nodes then you can use breadth first
+// more times than not you will need to use DFS because most trees are more complext and wide
+
+//in order
+// used commonly with a BST b/c you can then get a nice in order list of items
+//pre order
+// good to use ot 'flatten' a tree because it will give you a snapshot of that stree
+//post order ?? not sure
+// all area super easy to swap between since only changing one line of code
