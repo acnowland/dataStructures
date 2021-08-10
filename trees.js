@@ -84,16 +84,71 @@ class BST {
     console.log(visited);
     return visited;
   }
+
+  DFSpreorder() {
+    let data = [];
+    let current = this.root;
+    //the way this works is you start at this.root, you will then run helper function traverse
+    // push that value into data, then check to see if left, will then call travers on node.left
+    // wil lthen check to see if if left and repat all the way down to the endof left side
+    // it will then go back up to one level and see if there is a right
+    // then will run down that right side, and contiue like this
+    function traverse(node) {
+      data.push(node.value);
+      if (node.left) {
+        traverse(node.left);
+      }
+      if (node.right) {
+        traverse(node.right);
+      }
+    }
+    traverse(current);
+    return data;
+  }
+
+  DFSPostOrder() {
+    let data = [];
+    let current = this.root;
+
+    function traverse(node) {
+      if (node.left) {
+        traverse(node.left);
+      }
+      if (node.right) {
+        traverse(node.right);
+      }
+      data.push(node.value);
+    }
+    traverse(current);
+    return data;
+  }
+
+  DFSInOrder() {
+    let data = [];
+    let current = this.root;
+
+    function traverse(node) {
+      if (node.left) {
+        traverse(node.left);
+      }
+      data.push(node.value);
+      if (node.right) {
+        traverse(node.right);
+      }
+    }
+    traverse(current);
+    return data;
+  }
 }
 
 let tree = new BST();
 
 tree.insert(10);
-tree.insert(5);
-tree.insert(13);
-tree.insert(2);
-tree.insert(7);
+tree.insert(6);
 tree.insert(15);
+tree.insert(3);
+tree.insert(8);
+tree.insert(20);
 
 // console.log(tree.find(2));
-tree.BFS();
+console.log(tree.DFSInOrder());
